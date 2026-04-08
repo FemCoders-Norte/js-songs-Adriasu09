@@ -73,7 +73,15 @@ function getLongestSong(array) {
 getLongestSong(songs);
 
 //Exercise 8: Get the shortest song
-//Write the getShortestSong() function
+function getShortestSong(array) {
+  const songsInSeconds = minutsToSeconds(array);
+  const min = songsInSeconds.reduce((acc, song) => song.duration < acc ? song.duration : acc, Infinity);
+  const result = songsInSeconds.filter((song) => song.duration === min);
+  console.log("Exercise 8 ->", result);
+  return result;
+}
+
+getShortestSong(songs);
 
 export {
   getAllArtists,
@@ -83,4 +91,5 @@ export {
   songsByGenre,
   minutsToSeconds,
   getLongestSong,
+  getShortestSong,
 };
